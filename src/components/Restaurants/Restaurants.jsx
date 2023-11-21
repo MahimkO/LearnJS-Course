@@ -1,13 +1,17 @@
-import { RestaurantsHeader } from "../RestaurantsHeader/RestaurantsHeader.jsx";
-import { RestaurantsBody } from "../RestaurantsBody/RestaurantsBody.jsx";
+import { Restaurant } from "../Restaurant/Restaurant";
 
-import { restaurants } from "../../constants/mock.js";
-
-export const Restaurants = () => {
+export const Restaurants = ({restaurants}) => {
   return (
-    <>
-      <RestaurantsHeader />
-      <RestaurantsBody restaurantsList={restaurants}/>
-    </>
+    <div>
+      {restaurants.map(restaurant => (
+        <Restaurant
+          id={restaurant.id}
+          key={restaurant.id}
+          name={restaurant.name}
+          menu={restaurant.menu}
+          reviews={restaurant.reviews}
+        />
+      ))}
+    </div>
   );
 };
