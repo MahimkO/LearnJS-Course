@@ -3,7 +3,7 @@ import { Restaurant } from "../Restaurant/Restaurant";
 export const Restaurants = ({restaurants}) => {
   return (
     <div>
-      {restaurants.map(restaurant => (
+      {restaurants && restaurants.map(restaurant => (
         <Restaurant
           id={restaurant.id}
           key={restaurant.id}
