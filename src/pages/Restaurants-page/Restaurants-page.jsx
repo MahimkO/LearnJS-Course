@@ -1,25 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { RestaurantTabs } from "../../components/RestaurantTabs/RestaurantTabs";
-import { Restaurants } from "../../components/Restaurants/Restaurants";
+import { Restaurant } from "../../components/Restaurant/Restaurant.jsx";
 
 import { restaurants } from "../../constants/mock.js";
 
 export const RestaurantsPage = () => {
   const [activeTab, setActiveTab] = useState(null);
-  const [restaurant, setRestaurant] = useState(null);
 
-  useEffect(() => {
-    if (activeTab) {
-      const activeRestaurant = restaurants.filter(restaurant => restaurant.id === activeTab);
-      setRestaurant(activeRestaurant);
-    }
-  }, [activeTab]);
+  const restaurant = restaurants.find(restaurant => restaurant.id === activeTab);
 
   return (
-    <>
+    <div>
       <RestaurantTabs setActiveTab={setActiveTab} />
-      <Restaurants restaurants={restaurant} />
-    </>
+
+      {activeTab &&
+        <Restaurant
+          id={restaurant.id}
+          key={restaurant.id}
+          name={restaurant.name}
+          menu={restaurant.menu}
+          reviews={restaurant.reviews}
+        />
+      }
+    </div>
   );
 };
