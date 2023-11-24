@@ -1,4 +1,5 @@
 import { Dish } from "../Dish/Dish.jsx";
+import {ReviewForm} from "../ReviewForm/ReviewForm.jsx";
 
 export const Restaurant = ({name, menu, reviews}) => {
   return (
@@ -21,6 +22,7 @@ export const Restaurant = ({name, menu, reviews}) => {
           </li>
         ))}
       </ul>
+      <ReviewForm />
     </>
   );
 };
