@@ -1,10 +1,14 @@
 import { restaurants } from "../../constants/mock.js";
 
-export const RestaurantTabs = () => {
+export const RestaurantTabs = ({ setActiveTab }) => {
   return (
     <div>
       {restaurants.map(restaurant => {
-        return <button key={restaurant.id}>{restaurant.name}</button>;
+        return (
+          <button key={restaurant.id} onClick={() => setActiveTab(restaurant.id)}>
+            {restaurant.name}
+          </button>
+        );
       })}
     </div>
   );
