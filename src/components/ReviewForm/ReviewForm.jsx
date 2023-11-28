@@ -8,6 +8,8 @@ const defaultFormValue = {
   rating: 1,
 };
 
+const ratingStep = 0.5;
+
 const reducer = (state, action) => {
   switch (action.type) {
     case 'setName':
@@ -15,20 +17,19 @@ const reducer = (state, action) => {
         ...state,
         name: action.payload,
       };
+
     case 'setText':
       return {
         ...state,
         text: action.payload,
       };
-    // рейтинг у меня в локальный стейт компонента кладётся сейчас.
-    // можно переписать компонент Counter и убрать из него локальный стейт,
-    // но тогда придётся везде использовать несколько редьюсеров или один общий
-    // в родительском компоненте и прокидывать функцию изменения стора в дочерние компоненты.
+
     case 'setRating':
       return {
         ...state,
         rating: action.payload,
       };
+
     default:
       return state;
   }
@@ -48,8 +49,8 @@ export const ReviewForm = () => {
             type="text"
             value={formValue.name}
             onChange={(e) => dispatch(
-              {type: 'setName', payload: e.target.value})
-            }
+              {type: 'setName', payload: e.target.value}
+            )}
           />
         </div>
         <div>
@@ -59,16 +60,21 @@ export const ReviewForm = () => {
             type="text"
             value={formValue.text}
             onChange={(e) => dispatch(
-              {type: 'setText', payload: e.target.value})
-            }
+              {type: 'setText', payload: e.target.value}
+            )}
           />
         </div>
         <div style={{display: 'flex'}}>
           <span>Rating:</span>
           <Counter
-            step={0.5}
             min={1}
-            defaultValue={1}
+            value={formValue.rating}
+            increment={() => dispatch(
+              {type: 'setRating', payload: formValue.rating + ratingStep}
+            )}
+            decrement={() => dispatch(
+              {type: 'setRating', payload: formValue.rating - ratingStep}
+            )}
           />
         </div>
       </div>
