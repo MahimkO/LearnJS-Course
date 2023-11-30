@@ -5,13 +5,15 @@ import { Restaurant } from "../../components/Restaurant/Restaurant.jsx";
 
 import { restaurants } from "../../constants/mock.js";
 
+import styles from "./styles.module.scss";
+
 export const RestaurantsPage = () => {
   const [activeTab, setActiveTab] = useState(null);
 
   const restaurant = restaurants.find(restaurant => restaurant.id === activeTab);
 
   return (
-    <div>
+    <div className={styles['restaurants-page']}>
       <RestaurantTabs setActiveTab={setActiveTab} />
 
       {activeTab &&

@@ -22,7 +22,7 @@ export const Dish = ({name, price, ingredients}) => {
   const [state, dispatch] = useReducer(reducer, defaultValue);
 
   return (
-    // пока что сделал через инлайн стили, потому что мы модули css ещё не подключаем
+    // TODO пока что сделал через инлайн стили, потому что мы модули css ещё не подключаем
     <div style={{display: 'flex', justifyContent: 'space-between'}}>
       <span>Dish: {name}; Price: {price}; Ingredients: {
         ingredients.reduce((acc, ingredient) => {

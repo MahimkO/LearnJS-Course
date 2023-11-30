@@ -1,0 +1,33 @@
+.restaurant {
+  border-radius: 5px;
+  background-color: #eee;
+  padding: 20px;
+  margin-top: 15px;
+
+  &-title {
+    font-size: 26px;
+    padding: 0;
+    margin: 0;
+  }
+
+  &-menu, &-reviews, &-feedback {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 15px;
+
+    & > p {
+      font-size: 22px;
+      padding: 0;
+      margin: 0;
+    }
+
+    & > ul {
+      font-size: 20px;
+    }
+  }
+
+  &-feedback > p {
+    margin-bottom: 15px;
+  }
+}

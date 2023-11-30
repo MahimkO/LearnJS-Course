@@ -1,0 +1,15 @@
+.restaurant-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  height: 50px;
+  background-color: lightgrey;
+  border-radius: 5px;
+}
+
+.button {
+  height: 35px;
+  width: 150px;
+  font-size: 24px;
+}
