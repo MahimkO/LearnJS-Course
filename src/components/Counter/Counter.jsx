@@ -1,3 +1,7 @@
+import { useContext } from "react";
+
+import { ThemeContext } from "../Layout/Layout.jsx";
+
 import styles from "./styles.module.scss";
 
 export const Counter = ({
@@ -7,21 +11,25 @@ export const Counter = ({
   increment,
   decrement,
 }) => {
-    return (
-        <div className={styles.counter}>
-            <button
-                onClick={decrement}
-                disabled={value <= min}
-            >
-                -
-            </button>
-            <span> {value} </span>
-            <button
-              onClick={increment}
-              disabled={value >= max}
-            >
-                +
-            </button>
-        </div>
-    );
+  const { theme } = useContext(ThemeContext);
+
+  return (
+    <div className={styles.counter}>
+      <button
+        className={`${theme.theme === 'dark' ? styles['theme-dark'] : styles['theme-light']}`}
+        onClick={decrement}
+        disabled={value <= min}
+      >
+        -
+      </button>
+      <span> {value} </span>
+      <button
+        className={`${theme.theme === 'dark' ? styles['theme-dark'] : styles['theme-light']}`}
+        onClick={increment}
+        disabled={value >= max}
+      >
+        +
+      </button>
+    </div>
+  );
 };
