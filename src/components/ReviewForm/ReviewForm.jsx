@@ -2,6 +2,8 @@ import { useReducer } from "react";
 
 import { Counter } from "../Counter/Counter";
 
+import styles from "./styles.module.scss";
+
 const defaultFormValue = {
   name: '',
   text: '',
@@ -39,44 +41,41 @@ export const ReviewForm = () => {
   const [formValue, dispatch] = useReducer(reducer, defaultFormValue);
 
   return (
-    // пока что инлайн стилями сделал, потом на css переделаю, когда пройдём
-    <div style={{display: 'flex', justifyContent: 'space-between'}}>
-      <div>
-        <div>
-          <label htmlFor="name">Name: </label>
-          <input
-            name="name"
-            type="text"
-            value={formValue.name}
-            onChange={(e) => dispatch(
-              {type: 'setName', payload: e.target.value}
-            )}
-          />
-        </div>
-        <div>
-          <label htmlFor="text">Text: </label>
-          <input
-            name="text"
-            type="text"
-            value={formValue.text}
-            onChange={(e) => dispatch(
-              {type: 'setText', payload: e.target.value}
-            )}
-          />
-        </div>
-        <div style={{display: 'flex'}}>
-          <span>Rating:</span>
-          <Counter
-            min={1}
-            value={formValue.rating}
-            increment={() => dispatch(
-              {type: 'setRating', payload: formValue.rating + ratingStep}
-            )}
-            decrement={() => dispatch(
-              {type: 'setRating', payload: formValue.rating - ratingStep}
-            )}
-          />
-        </div>
+    <div className={styles['review-form']}>
+      <div className={styles['name']}>
+        <label htmlFor="name">Name: </label>
+        <input
+          name="name"
+          type="text"
+          value={formValue.name}
+          onChange={(e) => dispatch(
+            {type: 'setName', payload: e.target.value}
+          )}
+        />
+      </div>
+      <div className={styles['text']}>
+        <label htmlFor="text">Text: </label>
+        <input
+          name="text"
+          type="text"
+          value={formValue.text}
+          onChange={(e) => dispatch(
+            {type: 'setText', payload: e.target.value}
+          )}
+        />
+      </div>
+      <div className={styles['rating']}>
+        <span>Rating:</span>
+        <Counter
+          min={1}
+          value={formValue.rating}
+          increment={() => dispatch(
+            {type: 'setRating', payload: formValue.rating + ratingStep}
+          )}
+          decrement={() => dispatch(
+            {type: 'setRating', payload: formValue.rating - ratingStep}
+          )}
+        />
       </div>
     </div>
   );

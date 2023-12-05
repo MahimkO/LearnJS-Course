@@ -1,11 +1,17 @@
 import { restaurants } from "../../constants/mock.js";
 
+import styles from "./styles.module.scss";
+
 export const RestaurantTabs = ({ setActiveTab }) => {
   return (
-    <div>
+    <div className={styles['restaurant-tabs']}>
       {restaurants.map(restaurant => {
         return (
-          <button key={restaurant.id} onClick={() => setActiveTab(restaurant.id)}>
+          <button
+            className={styles.button}
+            onClick={() => setActiveTab(restaurant.id)}
+            key={restaurant.id}
+          >
             {restaurant.name}
           </button>
         );

@@ -1,3 +1,5 @@
+import styles from "./styles.module.scss";
+
 export const Counter = ({
   value = 0,
   min = 0,
@@ -6,7 +8,7 @@ export const Counter = ({
   decrement,
 }) => {
     return (
-        <div>
+        <div className={styles.counter}>
             <button
                 onClick={decrement}
                 disabled={value <= min}
