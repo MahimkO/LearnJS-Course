@@ -42,6 +42,7 @@ export const ReviewForm = () => {
 
   return (
     <div className={styles['review-form']}>
+      <span>Leave feedback:</span>
       <div className={styles['name']}>
         <label htmlFor="name">Name: </label>
         <input
