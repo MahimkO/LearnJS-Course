@@ -1,19 +1,21 @@
 import { useContext } from "react";
 
-import { ThemeContext } from "../Layout/Layout.jsx";
+import { Button } from "../Button/Button.jsx";
+
+import { ThemeContext } from "../../contexts/theme/ThemeContext.js";
 
 import styles from "./styles.module.scss";
+import {ThemeProvider} from "../../contexts/theme/ThemeProvider.jsx";
 
 export const Header = () => {
-  const { theme, setLightTheme, setDarkTheme } = useContext(ThemeContext);
-  const handleChangeTheme = () => {
-    theme.theme === 'dark' ? setLightTheme() : setDarkTheme();
-  };
+  const { changeTheme } = useContext(ThemeContext);
 
   return (
-    <div className={styles.header}>
-      <button>Order</button>
-      <button onClick={handleChangeTheme}>Change theme</button>
-    </div>
+    <ThemeProvider>
+      <div className={styles.header}>
+        <Button>Order</Button>
+        <Button onClick={changeTheme}>Change theme</Button>
+      </div>
+    </ThemeProvider>
   );
 };
