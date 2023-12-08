@@ -1,0 +1,15 @@
+.counter {
+  & > span {
+    display: inline-block;
+    width: 25px;
+    text-align: center;
+  }
+}
+
+.theme-dark {
+  color: white;
+}
+
+.theme-light {
+  color: unset;
+}

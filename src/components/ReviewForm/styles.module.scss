@@ -1,0 +1,31 @@
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+
+  & > span {
+    font-size: 22px;
+    padding-bottom: 15px;
+  }
+
+  & > .name, .text {
+    & > label {
+      display: inline-block;
+      width: 70px;
+      font-size: 20px;
+    }
+  }
+
+  & > .rating {
+    display: flex;
+    align-items: center;
+
+    & > span {
+      width: 70px;
+      font-size: 20px;
+    }
+  }
+}

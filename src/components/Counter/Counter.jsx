@@ -1,3 +1,7 @@
+import { Button } from "../Button/Button.jsx";
+
+import styles from "./styles.module.scss";
+
 export const Counter = ({
   value = 0,
   min = 0,
@@ -5,21 +9,21 @@ export const Counter = ({
   increment,
   decrement,
 }) => {
-    return (
-        <div>
-            <button
-                onClick={decrement}
-                disabled={value <= min}
-            >
-                -
-            </button>
-            <span> {value} </span>
-            <button
-              onClick={increment}
-              disabled={value >= max}
-            >
-                +
-            </button>
-        </div>
-    );
+  return (
+    <div className={styles.counter}>
+      <Button
+        onClick={decrement}
+        disabled={value <= min}
+      >
+        -
+      </Button>
+      <span> {value} </span>
+      <Button
+        onClick={increment}
+        disabled={value >= max}
+      >
+        +
+      </Button>
+    </div>
+  );
 };

@@ -1,0 +1,12 @@
+.restaurant {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 5px;
+  background-color: #eee;
+  padding: 20px;
+
+  &-title {
+    font-size: 26px;
+  }
+}

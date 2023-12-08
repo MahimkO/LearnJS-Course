@@ -1,28 +1,22 @@
-import { Dish } from "../Dish/Dish.jsx";
+import { useSelector } from "react-redux";
+
+import { Menu } from "../Menu/Menu.jsx";
+import { Reviews } from "../Reviews/Reviews.jsx";
 import { ReviewForm } from "../ReviewForm/ReviewForm.jsx";
 
-export const Restaurant = ({name, menu, reviews}) => {
+import { selectRestaurantById } from "../../redux/features/entities/restaurant/selectors.js";
+
+import styles from "./styles.module.scss";
+
+export const Restaurant = ({id}) => {
+  const restaurant = useSelector((state) => selectRestaurantById(state, id));
+
   return (
-    <>
-      <h2>{name}</h2>
-      <h3>Menu:</h3>
-      <ul>
-        {menu.map(menu => (
-          <li id={menu.id} key={menu.id}>
-              <Dish name={menu.name} price={menu.price} ingredients={menu.ingredients} />
-          </li>
-          ))}
-      </ul>
-      <h3>Reviews:</h3>
-      <ul>
-        {reviews.map(review => (
-          // не стал выносить в отдельный компонент Review, потому что нет нужды выносить 1 строчку вёрстки
-          <li id={review.id} key={review.id}>
-            Name: {review.user}; Text: {review.text}; Rating: {review.rating}
-          </li>
-        ))}
-      </ul>
+    <div className={styles.restaurant}>
+      <span className={styles['restaurant-title']}>{restaurant.name}</span>
+      <Menu menuIds={restaurant.menu} />
+      <Reviews reviewsIds={restaurant.reviews} />
       <ReviewForm />
-    </>
+    </div>
   );
 };
