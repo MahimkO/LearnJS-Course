@@ -1,14 +1,18 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import { RestaurantTabs } from "../../components/RestaurantTabs/RestaurantTabs";
 import { Restaurant } from "../../components/Restaurant/Restaurant.jsx";
 
-import { restaurants } from "../../constants/mock.js";
+import { selectRestaurants } from "../../redux/features/entities/restaurant/selectors.js";
 
 import styles from "./styles.module.scss";
 
 export const RestaurantsPage = () => {
   const [activeTab, setActiveTab] = useState(null);
+
+  const restaurantsEntities = useSelector(selectRestaurants);
+  const restaurants = Object.values(restaurantsEntities);
 
   const restaurant = restaurants.find(restaurant => restaurant.id === activeTab);
 
@@ -19,10 +23,6 @@ export const RestaurantsPage = () => {
       {activeTab &&
         <Restaurant
           id={restaurant.id}
-          key={restaurant.id}
-          // name={restaurant.name}
-          // menu={restaurant.menu}
-          // reviews={restaurant.reviews}
         />
       }
     </div>
