@@ -20,9 +20,9 @@ export const RestaurantsPage = () => {
         <Restaurant
           id={restaurant.id}
           key={restaurant.id}
-          name={restaurant.name}
-          menu={restaurant.menu}
-          reviews={restaurant.reviews}
+          // name={restaurant.name}
+          // menu={restaurant.menu}
+          // reviews={restaurant.reviews}
         />
       }
     </div>

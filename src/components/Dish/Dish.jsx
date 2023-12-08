@@ -1,6 +1,9 @@
 import { useReducer } from "react";
+import { useSelector } from "react-redux";
 
 import { Counter } from "../Counter/Counter";
+
+import { selectDishById } from "../../redux/features/entities/dish/selectors.js";
 
 const defaultValue = {counter: 0};
 
@@ -18,14 +21,15 @@ const reducer = (state, action) => {
   }
 };
 
-export const Dish = ({name, price, ingredients}) => {
+export const Dish = ({id}) => {
   const [state, dispatch] = useReducer(reducer, defaultValue);
+  const dish = useSelector((state) => selectDishById(state, id));
 
   return (
     // TODO пока что сделал через инлайн стили, потому что мы модули css ещё не подключаем
     <div style={{display: 'flex', justifyContent: 'space-between'}}>
-      <span>Dish: {name}; Price: {price}; Ingredients: {
-        ingredients.reduce((acc, ingredient) => {
+      <span>Dish: {dish.name}; Price: {dish.price}; Ingredients: {
+        dish.ingredients.reduce((acc, ingredient) => {
             return acc + `${ingredient}, `
         }, '')
       }</span>
