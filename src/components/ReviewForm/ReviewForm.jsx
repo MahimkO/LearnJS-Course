@@ -45,6 +45,7 @@ export const ReviewForm = () => {
       <div className={styles['name']}>
         <label htmlFor="name">Name: </label>
         <input
+          id="name"
           name="name"
           type="text"
           value={formValue.name}
@@ -56,6 +57,7 @@ export const ReviewForm = () => {
       <div className={styles['text']}>
         <label htmlFor="text">Text: </label>
         <input
+          id="text"
           name="text"
           type="text"
           value={formValue.text}

@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  background-color: #8585f3;
+
+  & > .button {
+    height: 30px;
+    width: 150px;
+    font-size: 18px;
+  }
+}
