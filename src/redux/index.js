@@ -12,4 +12,6 @@ export const store = configureStore({
     review: reviewSlice.reducer,
     user: userSlice.reducer,
   },
+  // чтобы использовать THUNK, нужно использовать middleware
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

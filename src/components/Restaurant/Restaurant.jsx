@@ -14,8 +14,8 @@ export const Restaurant = ({id}) => {
   return (
     <div className={styles.restaurant}>
       <span className={styles['restaurant-title']}>{restaurant.name}</span>
-      <Menu menuIds={restaurant.menu} />
-      <Reviews reviewsIds={restaurant.reviews} />
+      <Menu restaurantId={id} menuIds={restaurant.menu} />
+      <Reviews restaurantId={id} reviewsIds={restaurant.reviews} />
       <ReviewForm />
     </div>
   );

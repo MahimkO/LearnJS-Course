@@ -1,29 +1,29 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { RestaurantTabs } from "../../components/RestaurantTabs/RestaurantTabs";
 import { Restaurant } from "../../components/Restaurant/Restaurant.jsx";
 
-import { selectRestaurants } from "../../redux/features/entities/restaurant/selectors.js";
+import { getRestaurants } from "../../redux/features/entities/restaurant/thunks/getRestaurants.js";
 
 import styles from "./styles.module.scss";
 
 export const RestaurantsPage = () => {
   const [activeTab, setActiveTab] = useState(null);
 
-  const restaurantsEntities = useSelector(selectRestaurants);
-  const restaurants = Object.values(restaurantsEntities);
+  const dispatch = useDispatch();
 
-  const restaurant = restaurants.find(restaurant => restaurant.id === activeTab);
+  useEffect(() => {
+    dispatch(getRestaurants());
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className={styles['restaurants-page']}>
       <RestaurantTabs setActiveTab={setActiveTab} />
 
       {activeTab &&
-        <Restaurant
-          id={restaurant.id}
-        />
+        <Restaurant id={activeTab} />
       }
     </div>
   );
