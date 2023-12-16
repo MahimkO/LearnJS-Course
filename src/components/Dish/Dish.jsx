@@ -5,6 +5,8 @@ import { Counter } from "../Counter/Counter";
 
 import { selectDishById } from "../../redux/features/entities/dish/selectors.js";
 
+import styles from "./styles.module.scss";
+
 const defaultValue = {counter: 0};
 
 const step = 1;
@@ -26,10 +28,9 @@ export const Dish = ({id}) => {
   const dish = useSelector((state) => selectDishById(state, id));
 
   return (
-    // TODO пока что сделал через инлайн стили, потому что мы модули css ещё не подключаем
-    <div style={{display: 'flex', justifyContent: 'space-between'}}>
-      <span>Dish: {dish.name}; Price: {dish.price}; Ingredients: {
-        dish.ingredients.reduce((acc, ingredient) => {
+    <div className={styles.dish}>
+      <span>Dish: {dish?.name}; Price: {dish?.price}; Ingredients: {
+        dish?.ingredients.reduce((acc, ingredient) => {
             return acc + `${ingredient}, `
         }, '')
       }</span>
